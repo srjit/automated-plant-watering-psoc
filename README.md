@@ -11,3 +11,4 @@ Additional hardware for watering: [Capacitive Moisture Sensors, 4 Channel Relay,
 
 For multitasking, [FreeRTOS](https://www.freertos.org/) is used.
 
+A lot of the baseline code for this repo has been taken from [Wifi Webserver](https://github.com/Infineon/mtb-example-wifi-https-server) from Infineon's github and has been modified for the needs of this application.
