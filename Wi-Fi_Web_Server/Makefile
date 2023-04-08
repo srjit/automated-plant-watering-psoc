@@ -40,7 +40,7 @@ MTB_TYPE=COMBINED
 # To change the target, it is recommended to use the Library manager
 # ('make library-manager' from command line), which will also update Eclipse IDE launch
 # configurations.
-TARGET=APP_CY8CPROTO-062-4343W
+TARGET=APP_CY8CKIT-062S2-43012
 
 # Name of application (used to derive name of final linked file).
 #
@@ -77,7 +77,7 @@ VERBOSE=
 
 # Uncomment below DEFINES if you may use TFT feature on one of those boards:
 # CY8CKIT-062-WIFI-BT, CYW9P62S1-43438EVB-01, CY8CKIT-062S2-43012.
-# DEFINES+=ENABLE_TFT
+DEFINES+=ENABLE_TFT
 
 # Enable optional code that is ordinarily disabled by default.
 #

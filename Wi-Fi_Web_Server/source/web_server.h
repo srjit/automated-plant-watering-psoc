@@ -56,7 +56,6 @@
 #include "cyabs_rtos.h"
 #include "cy_http_server.h"
 #include "html_web_page.h"
-#include "sensors.h"
 
 #ifdef ENABLE_TFT
 /* CY8CKIT-028-TFT shield and LCD library */
@@ -85,11 +84,14 @@
 #define HTTP_PORT                                    (80u)
 #define URL_LENGTH                                   (128)
 #define MAX_SOCKETS                                  (4)
-#define MAX_HTTP_RESPONSE_LENGTH                     (sizeof(HTTP_SOFTAP_STARTUP_WEBPAGE) + 64)
+//
+#define MAX_HTTP_RESPONSE_LENGTH                     (256 + 64)
 #define HTTP_REQUEST_HANDLE_SUCCESS                  (0)
 #define HTTP_REQUEST_HANDLE_ERROR                    (-1)
 #define DEVICE_DATA_RESPONSE_LENGTH                  (sizeof(SOFTAP_DEVICE_DATA) + 64)
-#define WIFI_CONNECT_RESPONSE_LENGTH                 (sizeof(WIFI_CONNECT_RESPONSE_START) + sizeof(WIFI_CONNECT_SUCCESS_RESPONSE_END) + sizeof(WIFI_CONNECT_IN_PROGRESS) + 140)
+//#define WIFI_CONNECT_RESPONSE_LENGTH                 (sizeof(WIFI_CONNECT_RESPONSE_START) + sizeof(WIFI_CONNECT_SUCCESS_RESPONSE_END) + sizeof(WIFI_CONNECT_IN_PROGRESS) + 140)
+#define WIFI_CONNECT_RESPONSE_LENGTH                 (512 + 140)
+
 
 #define BUFFER_LENGTH                                (2048)
 #define WIFI_SSID_LEN                                (32u)
@@ -99,18 +101,6 @@
 #define SENSOR_BUFFER_LENGTH                         (128)
 #define DISPLAY_BUFFER_LENGTH                        (64)
 
-/* SoftAP Credentials */
-#define SOFTAP_SSID                                  "psoc_wifi"
-
-/* The password length should meet the requirement of the configured security
- * type. e.g. Passworld length should be between 8-63 characters for
- * CY_WCM_SECURITY_WPA2_AES_PSK.
- */
-#define SOFTAP_PASSWORD                              "abcd123456"
-#define SOFTAP_SECURITY_TYPE                         CY_WCM_SECURITY_WPA2_AES_PSK
-#define SOFTAP_IP_ADDRESS                            MAKE_IPV4_ADDRESS(192, 168, 0,  2)
-#define SOFTAP_NETMASK                               MAKE_IPV4_ADDRESS(255, 255, 255, 0)
-#define SOFTAP_GATEWAY                               MAKE_IPV4_ADDRESS(192, 168, 0,  2)
 
 #define MAX_WIFI_RETRY_COUNT                         (3u)
 #define WIFI_CONN_RETRY_INTERVAL_MSEC                (100u)
@@ -130,21 +120,17 @@
 /* Offset row position on TFT display */
 #define ROW_OFFSET                                   (20)
 /* Offset row position on TFT display for displaying sensor value */
-#define SENSOR_DISPLAY_OFFSET                        (200)
+#define SENSOR_DISPLAY_OFFSET                        (20)
 
 /* Macros used to format HTTP event stream sent from server to client */
 #define EVENT_STREAM_DATA                            "data: "
 #define LFLF                                         "\n\n"
 #define CHUNKED_CONTENT_LENGTH                       (0u)
 
-#define INCREASE                                     ("Increase")
-#define DECREASE                                     ("Decrease")
-
 #define PUMP1										 ("Pump1")
 #define PUMP2										 ("Pump2")
 #define PUMP3										 ("Pump3")
 #define PUMP4										 ("Pump4")
-
 
 
 #define MAKE_IP_PARAMETERS(a, b, c, d)               ((((uint32_t) d) << 24) | \
@@ -182,7 +168,8 @@
 
 
 void server_task(void *arg);
-cy_rslt_t wifi_extract_credentials(const uint8_t *data, uint32_t data_len, cy_http_response_stream_t *stream);
+//cy_rslt_t wifi_extract_credentials(const uint8_t *data, uint32_t data_len, cy_http_response_stream_t *stream);
+cy_rslt_t wifi_extract_credentials(void);
 cy_rslt_t start_sta_mode(void);
 cy_rslt_t start_ap_mode(void);
 void scan_for_available_aps(cy_http_response_stream_t *url_stream);

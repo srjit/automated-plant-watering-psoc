@@ -56,7 +56,6 @@
 /* Server task header file */
 #include "web_server.h"
 
-
 #if defined(CY_DEVICE_PSOC6A512K)
 #include "cy_serial_flash_qspi.h"
 #include "cycfg_qspi_memslot.h"
