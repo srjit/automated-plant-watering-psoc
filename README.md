@@ -5,7 +5,7 @@ A home automation project for watering my plants remotely while we go on vacatio
 
 ## Notes on Hardware / Software Used
 
-This project uses the Infineon PSoc [CYC8PROTO-062-4343W](https://www.mouser.com/ProductDetail/Infineon-Technologies/CY8CPROTO-062-4343W) board's functionalities for running logic, running a webservice, ADCs etc.
+This project uses the Infineon PSoc [APP_CY8CKIT-062S2-43012](https://www.infineon.com/cms/en/product/evaluation-boards/cy8ckit-062s2-43012/) board's functionalities for running logic, running a webservice, ADCs etc.
 
 Additional hardware for watering: [Capacitive Moisture Sensors, 4 Channel Relay, Watering Pumps, Tubes](https://www.amazon.com/gp/product/B093V62VXD)
 
